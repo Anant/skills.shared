@@ -14,9 +14,9 @@
       "source": "./",
       "strict": false,
       "skills": [
-        "./skills/finance-domain-to-dilligence",
-        "./skills/opportunity-finder",
-        "./skills/sales-proposal-responder",
+        "./skills/anant-financial-domain-to-diligence",
+        "./skills/anant-growth-opportunity-finder",
+        "./skills/anant-sales-proposal-responder",
         "./skills/skill-authoring"
       ]
     }

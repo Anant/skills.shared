@@ -1,5 +1,5 @@
 ---
-name: opportunity-finder
+name: anant-growth-opportunity-finder
 description: Systematically find, verify, score, prioritize, and package grants, fellowships, awards, prizes, sponsorships, accelerators, and research-funding opportunities, ending in ranked shortlists and proposal handoff briefs. Use this skill whenever the user asks to find funding, grants, fellowships, awards, prizes, RFPs, sponsorships, or research money; asks "who funds X"; wants a funding landscape or funder map; wants quick-apply opportunities; wants to filter opportunities against an ideal grant profile or beneficiary profile; or wants a proposal handoff brief for a known opportunity — even if they don't use the word "grant." Optimized for AI education, AI governance, AI alignment, AI sovereignty, open-source, workforce-development, and public-interest technology initiatives, but applicable to any funding search.
 ---
 

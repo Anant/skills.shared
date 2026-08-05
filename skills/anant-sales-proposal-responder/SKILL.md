@@ -1,5 +1,5 @@
 ---
-name: rfp-proposal-responder
+name: anant-sales-proposal-responder
 description: "End-to-end RFP/solicitation response workflow: read every solicitation document and amendment, extract the scoring rubric, produce a one-page outline & compliance checklist, then generate a complete draft proposal in the government's mandated structure with firm-specific data flagged as REQUIRED placeholders, plus cost/timeline estimation. Covers three tracks: state & local law enforcement / public safety (CJIS, NIBRS, MBE/MFD goals, bonds), federal defense & intelligence (FAR/DFARS, Sections L & M, CMMC, clearances), and small business & nonprofit (grants, foundations, simplified procurements). Use whenever the user mentions an RFP, RFI, RFQ, solicitation, bid, proposal response, statement of work response, compliance matrix, evaluation criteria, amendment analysis, or asks 'can we bid this' / 'what would it take to win this' — even if they only upload solicitation PDFs without asking a question yet."
 ---
 

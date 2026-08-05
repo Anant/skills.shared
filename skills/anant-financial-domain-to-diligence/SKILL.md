@@ -1,5 +1,5 @@
 ---
-name: domain-to-diligence
+name: anant-financial-domain-to-diligence
 description: >-
   Analyze a company from only its domain name and produce an investment-grade diligence
   memo with scores. Runs a 10-phase public-signal pipeline (infrastructure, website, tech
