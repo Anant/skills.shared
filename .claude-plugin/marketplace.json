@@ -10,10 +10,13 @@
   "plugins": [
     {
       "name": "shared-skills",
-      "description": "Shared skill-authoring guidance for the Anant team",
+      "description": "Shared Claude skills for the Anant team",
       "source": "./",
       "strict": false,
       "skills": [
+        "./skills/anant-financial-domain-to-diligence",
+        "./skills/anant-growth-opportunity-finder",
+        "./skills/anant-sales-proposal-responder",
         "./skills/skill-authoring"
       ]
     }
