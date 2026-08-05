@@ -9,7 +9,7 @@
   },
   "plugins": [
     {
-      "name": "shared-skills",
+      "name": "growth-skills",
       "description": "Shared Claude skills for the Anant team",
       "source": "./",
       "strict": false,
