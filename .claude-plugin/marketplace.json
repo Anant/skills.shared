@@ -1,0 +1,21 @@
+{
+  "name": "anant-shared-skills",
+  "owner": {
+    "name": "Anant"
+  },
+  "metadata": {
+    "description": "Shared Claude skills for the Anant team",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "shared-skills",
+      "description": "Shared skill-authoring guidance for the Anant team",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/skill-authoring"
+      ]
+    }
+  ]
+}
