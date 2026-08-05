@@ -12,7 +12,7 @@ Register this repository as a marketplace, then install the collection:
 
 ```text
 /plugin marketplace add Anant/skills.shared
-/plugin install shared-skills@anant-shared-skills
+/plugin install growth-skills@anant-shared-skills
 ```
 
 ### Checked-out repository
