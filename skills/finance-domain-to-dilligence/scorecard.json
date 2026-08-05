@@ -1,0 +1,57 @@
+{
+  "company": "The Browser Company of New York \u00e2\u20ac\u201d Dia Browser (acquired by Atlassian Oct 21, 2025)",
+  "preset": "platform",
+  "composite": 69.2,
+  "verdict": "Growth Partnership",
+  "verdict_reason": "high trajectory; minority/growth bet",
+  "dimensions": [
+    {
+      "dimension": "Market Attractiveness",
+      "score": 8.0,
+      "weight": 0.15,
+      "contribution": 12.0
+    },
+    {
+      "dimension": "Business Model Quality",
+      "score": 6.0,
+      "weight": 0.15,
+      "contribution": 9.0
+    },
+    {
+      "dimension": "Growth Trajectory",
+      "score": 8.0,
+      "weight": 0.12,
+      "contribution": 9.6
+    },
+    {
+      "dimension": "Digital/Tech Maturity",
+      "score": 9.0,
+      "weight": 0.1,
+      "contribution": 9.0
+    },
+    {
+      "dimension": "Team Strength",
+      "score": 9.0,
+      "weight": 0.1,
+      "contribution": 9.0
+    },
+    {
+      "dimension": "Financial Health Proxy",
+      "score": 7.0,
+      "weight": 0.13,
+      "contribution": 9.1
+    },
+    {
+      "dimension": "Risk Profile",
+      "score": 7.0,
+      "weight": 0.1,
+      "contribution": 7.0
+    },
+    {
+      "dimension": "Technology Uplift Opportunity",
+      "score": 3.0,
+      "weight": 0.15,
+      "contribution": 4.5
+    }
+  ]
+}

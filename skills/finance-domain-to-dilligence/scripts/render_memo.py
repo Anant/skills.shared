@@ -1,0 +1,142 @@
+#!/usr/bin/env python3
+"""Phase 9 — Render the investment memo from the analysis state object.
+
+Fills templates/investment_memo.md with the state object (company snapshot, scorecard,
+findings, uplift roadmap, thesis, risks, human-diligence items) and writes Markdown. With
+--html it also emits a standalone HTML scorecard.
+
+Usage:
+    python render_memo.py --state state.json --scorecard scorecard.json -o memo.md
+    python render_memo.py --state state.json --scorecard scorecard.json -o memo.md --html
+
+The state object is what the 10 phases append to. See ../templates/investment_memo.md for
+the section structure and ../references/ for scoring/confidence conventions. Stdlib only.
+"""
+import argparse
+import json
+import os
+import sys
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+TEMPLATE = os.path.join(HERE, "..", "templates", "investment_memo.md")
+
+
+def tag(field):
+    """Render a confidence-tagged field: {'value':..,'confidence':..} or a bare value."""
+    if isinstance(field, dict) and "value" in field:
+        return f"{field['value']}  _[{field.get('confidence', 'Inferred')}]_"
+    return str(field) if field is not None else "_unknown_"
+
+
+def scorecard_table(sc):
+    lines = ["| Dimension | Score | Weight | Contribution |",
+             "|-----------|:-----:|:------:|:------------:|"]
+    for d in sc.get("dimensions", []):
+        lines.append(f"| {d['dimension']} | {d['score']:.1f} | "
+                     f"{d['weight']*100:.0f}% | {d['contribution']:.2f} |")
+    lines.append(f"| **Composite** | | | **{sc.get('composite', 0):.2f}** |")
+    return "\n".join(lines)
+
+
+def bullet_findings(items):
+    if not items:
+        return "_No findings recorded._"
+    out = []
+    for it in items:
+        if isinstance(it, dict):
+            out.append(f"- {it.get('finding', it)}  _[{it.get('confidence', 'Inferred')}]_"
+                       + (f"  (src: {it['source']})" if it.get("source") else ""))
+        else:
+            out.append(f"- {it}")
+    return "\n".join(out)
+
+
+def render_html(state, sc):
+    rows = "".join(
+        f"<tr><td>{d['dimension']}</td><td>{d['score']:.1f}</td>"
+        f"<td>{d['weight']*100:.0f}%</td><td>{d['contribution']:.2f}</td></tr>"
+        for d in sc.get("dimensions", []))
+    return f"""<!doctype html><meta charset=utf-8>
+<title>Scorecard — {state.get('company','')}</title>
+<style>body{{font:15px/1.5 system-ui;margin:2rem;max-width:760px}}
+table{{border-collapse:collapse;width:100%}}th,td{{border:1px solid #ccc;padding:.4rem .6rem;text-align:left}}
+.verdict{{font-size:1.3rem;font-weight:700}}.c{{color:#666}}</style>
+<h1>{state.get('company','Company')}</h1>
+<p class=verdict>{sc.get('verdict','')} — {sc.get('composite',0):.1f}/100</p>
+<p class=c>{sc.get('verdict_reason','')}  (preset: {sc.get('preset','')})</p>
+<table><tr><th>Dimension</th><th>Score</th><th>Weight</th><th>Contribution</th></tr>{rows}</table>
+<p class=c>Public-signal screening only. Figures tagged Inferred/Speculative carry wide error bands.</p>"""
+
+
+def main():
+    ap = argparse.ArgumentParser(description="Phase 9 memo renderer.")
+    ap.add_argument("--state", required=True)
+    ap.add_argument("--scorecard", help="scorecard.json from score.py")
+    ap.add_argument("-o", "--out", default="memo.md")
+    ap.add_argument("--html", action="store_true", help="also write an HTML scorecard")
+    args = ap.parse_args()
+
+    state = json.load(open(args.state))
+    sc = json.load(open(args.scorecard)) if args.scorecard else state.get("scorecard", {})
+    snap = state.get("snapshot", {})
+
+    memo = f"""# Investment Memo — {state.get('company', 'Company')}
+
+## 1. Executive Summary
+{state.get('executive_summary', '_TODO_')}
+
+**Verdict: {sc.get('verdict', 'TBD')}**  ·  Composite: **{sc.get('composite', 0):.1f}/100**
+(preset: {sc.get('preset', 'platform')})
+
+> Public-signal screening tool, not confirmatory diligence. All Inferred/Speculative items
+> appear in §8 for human verification.
+
+## 2. Company Snapshot
+- **What they do:** {tag(snap.get('what'))}
+- **Model:** {tag(snap.get('model'))}
+- **Size estimate:** {tag(snap.get('size'))}
+- **Founded:** {tag(snap.get('founded'))}
+- **HQ:** {tag(snap.get('hq'))}
+- **Leadership:** {tag(snap.get('leadership'))}
+
+## 3. Scorecard
+{scorecard_table(sc)}
+
+**Verdict rationale:** {sc.get('verdict_reason', '')}
+
+## 4. Dimension-by-Dimension Findings
+{bullet_findings(state.get('findings', []))}
+
+## 5. Technology Uplift Roadmap
+**Quick Wins (0–90 days):**
+{bullet_findings(state.get('quick_wins', []))}
+
+**Strategic Plays:**
+{bullet_findings(state.get('strategic_plays', []))}
+
+## 6. Deal Thesis
+{state.get('deal_thesis', '_Which quadrant? Why does this fit? The value-creation angle._')}
+
+## 7. Risks & Red Flags
+{bullet_findings(state.get('risks', []))}
+
+## 8. Recommended Next Steps / Human Diligence Items
+{bullet_findings(state.get('human_diligence', []))}
+
+---
+_Generated by the domain-to-diligence skill. Revenue/traffic/headcount are modeled with wide
+error bands; review signals can be gamed. Corroborate before acting._
+"""
+    with open(args.out, "w") as f:
+        f.write(memo)
+    print(f"Wrote {args.out}")
+
+    if args.html:
+        html_path = os.path.splitext(args.out)[0] + "_scorecard.html"
+        with open(html_path, "w") as f:
+            f.write(render_html(state, sc))
+        print(f"Wrote {html_path}")
+
+
+if __name__ == "__main__":
+    sys.exit(main())

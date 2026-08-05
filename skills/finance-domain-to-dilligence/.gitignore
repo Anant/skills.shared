@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Skill run artifacts (generated per-analysis)
+state.json
+scorecard.json
+memo.md
+memo*.html
+phase*.json
+
+# OS
+.DS_Store
