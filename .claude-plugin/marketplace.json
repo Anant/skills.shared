@@ -1,23 +1,32 @@
 {
-  "name": "anant-shared-skills",
+  "name": "anant-labs",
   "owner": {
-    "name": "Anant"
+    "name": "Anant Corporation Labs"
   },
   "metadata": {
-    "description": "Shared Claude skills for the Anant team",
-    "version": "0.1.0"
+    "description": "Intelcraft skills from Anant Corporation Labs: used on our engagements, released to the community",
+    "version": "0.2.0"
   },
   "plugins": [
     {
-      "name": "growth-skills",
-      "description": "Shared Claude skills for the Anant team",
+      "name": "intelcraft-growth",
+      "description": "Business-development skills: domain-to-diligence company screening, funding opportunity finding, and RFP responses",
       "source": "./",
       "strict": false,
       "skills": [
-        "./skills/anant-financial-domain-to-diligence",
-        "./skills/anant-growth-opportunity-finder",
-        "./skills/anant-sales-proposal-responder",
-        "./skills/skill-authoring"
+        "./skills/intelcraft-domain-due-diligence",
+        "./skills/intelcraft-opportunity-finder",
+        "./skills/intelcraft-rfp-responder"
+      ]
+    },
+    {
+      "name": "intelcraft-knowledge",
+      "description": "Knowledge skills: a Notion-backed collection harness and shared skill authoring",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/intelcraft-notion-collector",
+        "./skills/intelcraft-skill-authoring"
       ]
     }
   ]

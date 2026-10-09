@@ -1,5 +1,5 @@
 ---
-name: anant-sales-proposal-responder
+name: intelcraft-rfp-responder
 description: "End-to-end RFP/solicitation response workflow: read every solicitation document and amendment, extract the scoring rubric, produce a one-page outline & compliance checklist, then generate a complete draft proposal in the government's mandated structure with firm-specific data flagged as REQUIRED placeholders, plus cost/timeline estimation. Covers three tracks: state & local law enforcement / public safety (CJIS, NIBRS, MBE/MFD goals, bonds), federal defense & intelligence (FAR/DFARS, Sections L & M, CMMC, clearances), and small business & nonprofit (grants, foundations, simplified procurements). Use whenever the user mentions an RFP, RFI, RFQ, solicitation, bid, proposal response, statement of work response, compliance matrix, evaluation criteria, amendment analysis, or asks 'can we bid this' / 'what would it take to win this' — even if they only upload solicitation PDFs without asking a question yet."
 ---
 
@@ -72,7 +72,7 @@ If signals are mixed (e.g., federal pass-through grant to a nonprofit), read bot
 1. Mine the solicitation for price signals: bond amounts, "high dollar" thresholds, user counts, term length, labor category tables, mandatory SLAs.
 2. Build a component table (one-time vs. recurring) with low/high ranges from market comparables for the system class — template T4.
 3. State the evaluated-price sweet spot and what fixed costs (bonds, insurance, escrow) must be absorbed into pricing.
-4. If AI-assisted delivery (e.g., Claude Code) is assumed: apply savings only to code-heavy services (interfaces, ETL, test automation, documentation), never to COTS subscriptions; note that calendar compression is limited by government-paced activities (workshops, UAT, training).
+4. If AI-assisted delivery (e.g., a coding agent) is assumed: apply savings only to code-heavy services (interfaces, ETL, test automation, documentation), never to COTS subscriptions; note that calendar compression is limited by government-paced activities (workshops, UAT, training).
 
 ### Phase 5 — Review Gates (adapt color-team language to audience)
 

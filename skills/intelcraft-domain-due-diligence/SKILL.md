@@ -1,5 +1,5 @@
 ---
-name: anant-financial-domain-to-diligence
+name: intelcraft-domain-due-diligence
 description: >-
   Analyze a company from only its domain name and produce an investment-grade diligence
   memo with scores. Runs a 10-phase public-signal pipeline (infrastructure, website, tech
@@ -136,7 +136,10 @@ just 4 dimensions — Business Model, Growth, Digital Maturity, Tech Uplift — 
 provisional verdict + "worth a deep dive? Y/N". Deliver a half-page triage card with
 provisional quadrant placement and the top 3 uplift hypotheses.
 
-## Tool mapping (Claude)
+## Tool mapping
+
+Tool names vary by agent; use the closest equivalent.
+
 
 - **web_search** — news, competitors, reviews, funding, leadership.
 - **web_fetch** — homepage/subpages, sitemap, RDAP/DNS/crt.sh/SEC/CourtListener JSON, review pages.

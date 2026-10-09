@@ -1,6 +1,6 @@
-# anant-financial-domain-to-diligence
+# intelcraft-domain-due-diligence
 
-A [Claude Skill](https://docs.claude.com/en/docs/claude-code/skills) that takes a single
+An [agent skill](https://agentskills.io) that takes a single
 **domain name** and produces an investment-grade company breakdown for a technology-focused
 investor — using **public data only**, with **every finding confidence-tagged**.
 
@@ -15,7 +15,7 @@ Turnaround / Pass**.
 ## Layout
 
 ```
-anant-financial-domain-to-diligence/
+intelcraft-domain-due-diligence/
 ├── SKILL.md                    # the workflow: 10 phases + scoring + verdict logic (lean)
 ├── references/
 │   ├── phase-playbooks.md       # detailed per-phase signal interpretation
@@ -32,13 +32,14 @@ anant-financial-domain-to-diligence/
 
 ## Install
 
-Symlink (or copy) this folder into your Claude skills directory:
+Symlink (or copy) this folder into your agent's skills directory (for example
+`~/.claude/skills/` for Claude Code or `~/.agents/skills/` for Codex):
 
 ```bash
-ln -s "$(pwd)" ~/.claude/skills/anant-financial-domain-to-diligence
+ln -s "$(pwd)" ~/.claude/skills/intelcraft-domain-due-diligence
 ```
 
-The skill auto-invokes when you ask Claude to evaluate, screen, or diligence a company from
+The skill auto-invokes when you ask the agent to evaluate, screen, or diligence a company from
 its domain/website.
 
 ## Scripts
