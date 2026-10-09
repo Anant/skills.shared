@@ -19,7 +19,7 @@ import time
 import urllib.error
 import urllib.request
 
-UA = "anant-financial-domain-to-diligence/1.0 (public-signal screening)"
+UA = "intelcraft-domain-due-diligence/1.0 (public-signal screening)"
 
 
 def _get(url, headers=None, timeout=20, tries=3):
