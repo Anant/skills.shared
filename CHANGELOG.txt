@@ -1,0 +1,58 @@
+Changelog - Intelcraft Skills by Anant Labs (Anant/skills.shared)
+=================================================================
+
+v0.2.0 - 2026-10-09
+-------------------
+
+The repository is now the Intelcraft skill library from Anant Corporation Labs.
+These are the skills we use on our engagements, and we release them to the
+community under the MIT license.
+
+Breaking changes
+  * Marketplace renamed: anant-shared-skills -> anant-labs.
+  * Plugin growth-skills replaced by intelcraft-growth and intelcraft-knowledge.
+    Reinstall with:
+      /plugin marketplace add Anant/skills.shared
+      /plugin install intelcraft-growth@anant-labs
+      /plugin install intelcraft-knowledge@anant-labs
+  * Skills renamed:
+      anant-financial-domain-to-diligence -> intelcraft-domain-due-diligence
+      anant-growth-opportunity-finder     -> intelcraft-opportunity-finder
+      anant-sales-proposal-responder      -> intelcraft-rfp-responder
+      skill-authoring                     -> intelcraft-skill-authoring
+
+Added
+  * intelcraft-notion-collector: a Notion-backed collection harness. Commands:
+    init, explore, seek, organize, understand, status, run. Collected items
+    are held for human review.
+  * scripts/build_skills.py (Python standard library only):
+      check  validates skill names and descriptions, referenced files, and
+             marketplace coverage.
+      build  writes per-skill .zip and .skill packages, per-plugin archives
+             (plugin.json plus .claude-plugin/plugin.json), and SHA256SUMS.
+             The archives are reproducible.
+  * GitHub workflow (.github/workflows/skills.yml): validates and builds on
+    every pull request. On a v* tag it publishes the packages to a GitHub
+    Release.
+  * Install instructions for Claude Code, Claude.ai, ChatGPT desktop/Codex,
+    and other agents.
+  * MIT LICENSE.
+
+Changed
+  * README rewritten for Anant Labs and Intelcraft. CONTRIBUTING rewritten
+    with the naming, frontmatter, and release rules.
+  * Skill instructions are now provider-neutral, so they work in any agent
+    that reads SKILL.md.
+
+Removed
+  * Committed run outputs from the diligence skill (state.json, memo.md,
+    scorecard.json, memo_scorecard.html).
+
+v0.1.0
+------
+
+  * Shared Claude skills repository with a Claude Code marketplace
+    (anant-shared-skills, plugin growth-skills).
+  * Skills: anant-financial-domain-to-diligence,
+    anant-growth-opportunity-finder, anant-sales-proposal-responder,
+    skill-authoring.
