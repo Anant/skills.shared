@@ -33,7 +33,7 @@ for the app you use.
 | App | What to install | How |
 | --- | --- | --- |
 | Claude Code | Plugin | Add the marketplace from this repo |
-| Claude (web and desktop app) | One skill at a time | Upload `<skill>.zip` |
+| Claude (web and desktop app) | Plugin, or one skill at a time | Add the marketplace from this repo, or upload a `.zip` |
 | ChatGPT desktop app | Plugin or skill | Add the marketplace, or copy a skill folder |
 | ChatGPT on the web | Plugin | Install a plugin that your workspace published or imported |
 
@@ -52,29 +52,41 @@ On Claude Code 2.1.275 or later you can do it in one step:
 
 ### Claude on the web (claude.ai) and the Claude desktop app
 
-Skills work on Free, Pro, Max, Team, and Enterprise plans. The steps are the same
-on the web and in the desktop app.
+The steps are the same on the web and in the desktop app's Chat and Cowork
+tabs. Plugins you add are saved to your Claude account, so they also show up in
+Claude Code (v2.1.273 or later) when you sign in with that account.
 
-1. Download a skill's `.zip` from the
-   [latest release](https://github.com/Anant/skills.shared/releases/latest),
-   for example `intelcraft-notion-collector.zip`. Don't unzip it.
-2. Open **Settings > Capabilities** and turn on **Code execution and file
-   creation**. On Team and Enterprise plans, an owner must first allow
-   **Skills** under **Organization settings > Plugins & skills**.
-3. Open **Customize > Skills**, click **+**, choose **Create skill**, then
-   **Upload a skill**, and pick the `.zip`.
-4. Check that the skill is toggled on. Then ask for the task, for example
-   "Collect MCP servers for Cassandra into Notion." Claude loads the skill when
-   your request matches it.
+**Add the marketplace (Pro, Max, Team, and Enterprise plans)**
 
-Install the other skills the same way. Each one is uploaded on its own. On Team
-and Enterprise plans you can share an uploaded skill from its **...** menu.
-See Anthropic's guide,
-[Use skills in Claude](https://support.claude.com/en/articles/12512180-using-skills-in-claude).
+1. Open **Customize** in the left sidebar, then the **Plugins** tab.
+2. Choose **Add > Add marketplace** and enter `Anant/skills.shared`, or the full
+   URL `https://github.com/Anant/skills.shared`.
+3. Open **intelcraft-growth** or **intelcraft-knowledge** and click **Add**.
+4. In a chat, type `/` or click **+** to pick an Intelcraft skill. You can also
+   just describe the task, and Claude uses the matching skill.
 
-<!-- TODO(screenshot): docs/images/claude-settings-capabilities.png showing the Code execution and file creation toggle -->
+To pick up new releases, open the marketplace and choose **Check for updates**,
+or turn on **Sync automatically**. On Team and Enterprise plans, an Owner
+decides whether members can add their own marketplaces.
+
+<!-- TODO(screenshot): docs/images/claude-add-marketplace.png showing Customize > Plugins > Add > Add marketplace with Anant/skills.shared -->
+<!-- TODO(screenshot): docs/images/claude-plugin-added.png showing intelcraft-growth after it is added -->
+
+**Upload a file instead**
+
+- **Plugin:** choose **Add > Upload plugin** and pick `intelcraft-growth.zip`
+  or `intelcraft-knowledge.zip` from the
+  [latest release](https://github.com/Anant/skills.shared/releases/latest).
+- **Single skill (any plan, including Free):** turn on **Code execution and
+  file creation** under **Settings > Capabilities**. Then open
+  **Customize > Skills**, click **+**, choose **Create skill > Upload a skill**,
+  and pick the skill's `.zip`, for example `intelcraft-notion-collector.zip`.
+
+See Anthropic's guides [Plugins](https://claude.com/docs/plugins/overview),
+[Use plugins in Claude](https://support.claude.com/en/articles/13837440-use-plugins-in-claude),
+and [Use skills in Claude](https://support.claude.com/en/articles/12512180-using-skills-in-claude).
+
 <!-- TODO(screenshot): docs/images/claude-upload-skill.png showing Customize > Skills > + > Upload a skill -->
-<!-- TODO(screenshot): docs/images/claude-skill-enabled.png showing an intelcraft skill toggled on in the list -->
 
 ### ChatGPT desktop app (and Codex)
 
