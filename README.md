@@ -27,6 +27,16 @@ Download any skill or plugin from the
 
 ## Install
 
+Every release has a download for each skill and each plugin. Pick the section
+for the app you use.
+
+| App | What to install | How |
+| --- | --- | --- |
+| Claude Code | Plugin | Add the marketplace from this repo |
+| Claude (web and desktop app) | One skill at a time | Upload `<skill>.zip` |
+| ChatGPT desktop app | Plugin or skill | Add the marketplace, or copy a skill folder |
+| ChatGPT on the web | Plugin | Install a plugin that your workspace published or imported |
+
 ### Claude Code
 
 ```text
@@ -35,23 +45,88 @@ Download any skill or plugin from the
 /plugin install intelcraft-knowledge@anant-labs
 ```
 
-On Claude Code 2.1.275 or later, one step also works:
+On Claude Code 2.1.275 or later you can do it in one step:
 `/plugin install intelcraft-growth --marketplace Anant/skills.shared`.
 
-### Claude.ai and the Claude desktop app
+<!-- TODO(screenshot): docs/images/claude-code-plugin-install.png showing /plugin install intelcraft-growth@anant-labs -->
 
-Download `<skill>.zip` from the latest release, then upload it under
-**Customize > Skills**.
+### Claude on the web (claude.ai) and the Claude desktop app
 
-### ChatGPT desktop and Codex
+Skills work on Free, Pro, Max, Team, and Enterprise plans. The steps are the same
+on the web and in the desktop app.
 
-The ChatGPT desktop app and Codex read this repository's
-`.claude-plugin/marketplace.json` as a marketplace, so add the repository as a
-marketplace and install `intelcraft-growth` or `intelcraft-knowledge`. To
-install a single skill instead, unzip `<skill>.zip` from the latest release into
-`~/.agents/skills/`.
+1. Download a skill's `.zip` from the
+   [latest release](https://github.com/Anant/skills.shared/releases/latest),
+   for example `intelcraft-notion-collector.zip`. Don't unzip it.
+2. Open **Settings > Capabilities** and turn on **Code execution and file
+   creation**. On Team and Enterprise plans, an owner must first allow
+   **Skills** under **Organization settings > Plugins & skills**.
+3. Open **Customize > Skills**, click **+**, choose **Create skill**, then
+   **Upload a skill**, and pick the `.zip`.
+4. Check that the skill is toggled on. Then ask for the task, for example
+   "Collect MCP servers for Cassandra into Notion." Claude loads the skill when
+   your request matches it.
 
-### Plugin directories and other agents
+Install the other skills the same way. Each one is uploaded on its own. On Team
+and Enterprise plans you can share an uploaded skill from its **...** menu.
+See Anthropic's guide,
+[Use skills in Claude](https://support.claude.com/en/articles/12512180-using-skills-in-claude).
+
+<!-- TODO(screenshot): docs/images/claude-settings-capabilities.png showing the Code execution and file creation toggle -->
+<!-- TODO(screenshot): docs/images/claude-upload-skill.png showing Customize > Skills > + > Upload a skill -->
+<!-- TODO(screenshot): docs/images/claude-skill-enabled.png showing an intelcraft skill toggled on in the list -->
+
+### ChatGPT desktop app (and Codex)
+
+The ChatGPT desktop app reads this repository's
+`.claude-plugin/marketplace.json`, so you can install the plugins directly.
+
+1. Add the marketplace. Run this in a terminal with the Codex CLI:
+
+   ```sh
+   codex plugin marketplace add Anant/skills.shared
+   ```
+
+2. Restart the ChatGPT desktop app and open the **Plugins** tab.
+3. Choose the **anant-labs** marketplace, open **intelcraft-growth** or
+   **intelcraft-knowledge**, and click **+** to install it.
+4. Start a new chat. Describe the task, or type `@` to pick a skill, for example
+   `@intelcraft-rfp-responder`.
+
+To install one skill without a plugin, unzip its `.zip` from the
+[latest release](https://github.com/Anant/skills.shared/releases/latest) into
+`~/.agents/skills/`. You should end up with
+`~/.agents/skills/intelcraft-rfp-responder/SKILL.md`. The skill then appears
+under **Skills** in the sidebar. In Codex CLI, type `$` to mention it.
+
+See OpenAI's guides [Plugins](https://developers.openai.com/codex/plugins) and
+[Build skills](https://developers.openai.com/codex/skills).
+
+<!-- TODO(screenshot): docs/images/chatgpt-desktop-plugins-marketplace.png showing the anant-labs marketplace in the Plugins tab -->
+<!-- TODO(screenshot): docs/images/chatgpt-desktop-at-skill.png showing @intelcraft-... in the prompt box -->
+
+### ChatGPT on the web
+
+ChatGPT on the web doesn't load standalone skills. It uses skills only when they
+come bundled in a plugin, so you install `intelcraft-growth` or
+`intelcraft-knowledge` from the **Plugins** tab at
+[chatgpt.com/plugins](https://chatgpt.com/plugins).
+
+- **Workspace plans:** an admin can import this GitHub marketplace under
+  **Admin > Plugins**, or publish a plugin from **Personal > ... > Publish**
+  after adding it in the desktop app. The plugins then appear under your
+  workspace's tab in the Plugins Directory.
+- **Personal accounts:** add the plugins in the desktop app first (see above).
+  Plugins from personal marketplaces are listed under **Personal** in the
+  Plugins Directory.
+
+Once a plugin is installed, start a new chat and type `@` to pick an Intelcraft
+skill.
+
+<!-- TODO: Submit intelcraft-growth and intelcraft-knowledge to the public Plugins Directory (https://developers.openai.com/plugins/deploy/submission), then replace this section with a direct install link. -->
+<!-- TODO(screenshot): docs/images/chatgpt-web-plugins-tab.png showing the Intelcraft plugin in chatgpt.com/plugins -->
+
+### Other agents and plugin directories
 
 Each release includes `intelcraft-growth.zip` and `intelcraft-knowledge.zip`.
 Each archive holds a portable `plugin.json`, a `.claude-plugin/plugin.json`, and
